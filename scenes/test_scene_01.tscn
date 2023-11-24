@@ -1,19 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7acfs857n8r"]
+[gd_scene load_steps=6 format=3 uid="uid://c7acfs857n8r"]
 
 [ext_resource type="Script" path="res://scripts/user/selection/selectable.gd" id="1_3dy6e"]
 [ext_resource type="Texture2D" uid="uid://c68w0hmn5w3im" path="res://icon.svg" id="1_gu0e2"]
+[ext_resource type="Script" path="res://scripts/shared/tile_map_service.gd" id="1_lqniu"]
+[ext_resource type="Script" path="res://scripts/user/cursor_follower.gd" id="4_28gaa"]
+
+[sub_resource type="TileSet" id="TileSet_786jf"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Test" type="Node2D" parent="."]
+[node name="TileMapService" type="Node" parent="."]
+script = ExtResource("1_lqniu")
+
+[node name="TileMap" type="TileMap" parent="TileMapService"]
+tile_set = SubResource("TileSet_786jf")
+format = 2
 
 [node name="ShopSlot" type="Node2D" parent="."]
 position = Vector2(106, 106)
 script = ExtResource("1_3dy6e")
 
 [node name="Button" type="Button" parent="ShopSlot"]
-offset_right = 136.0
-offset_bottom = 136.0
+offset_left = -326.0
+offset_top = -8.0
+offset_right = -302.0
+offset_bottom = 16.0
 icon = ExtResource("1_gu0e2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+
+[node name="CursorFollower" type="Node2D" parent="."]
+script = ExtResource("4_28gaa")
+
+[node name="Sprite2D" type="Sprite2D" parent="CursorFollower"]
+texture = ExtResource("1_gu0e2")
 
 [connection signal="button_down" from="ShopSlot/Button" to="ShopSlot" method="_on_button_down"]
