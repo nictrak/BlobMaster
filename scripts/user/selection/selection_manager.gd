@@ -21,3 +21,7 @@ func deselect():
 		return
 	deselect_down.emit()
 	current_selection = null
+	
+func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		deselect()
