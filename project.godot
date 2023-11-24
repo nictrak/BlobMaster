@@ -14,3 +14,7 @@ config/name="BlobMaster"
 run/main_scene="res://scenes/test_scene_01.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SelectionManager="*res://scripts/user/selection/selection_manager.gd"
